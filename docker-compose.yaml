@@ -21,3 +21,19 @@ services:
       - 27017:27017
     volumes:
       - ./mongo_data:/data/db
+  category-api:
+    environment: 
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+    container_name: categoryAPI
+    build: ./backend/categoryAPI
+    ports: 
+      - 5000:5000
+  product-api:
+    environment: 
+      category_url: http://category-api:5000
+      hostURL: "mongo"
+    container_name: productAPI
+    build: ./backend/productAPI
+    ports:
+      - 5001:5001

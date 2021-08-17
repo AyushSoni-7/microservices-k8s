@@ -23,10 +23,13 @@ def create_app():
     #     'username': 'root',
     #     'password': 'password'
     # }
+    hostURL = os.environ.get('hostURL', 'localhost')
+    portMongo = os.environ.get('hostURL', '27017')
+    mongoURI = "mongodb://" + hostURL + ":" + portMongo + "/productDB"
     flask_app.config["MONGODB_SETTINGS"] = {
-        'DB': "productDB",
-        "host": "mongodb://localhost:27017/productDB"
-        }
+         'DB': "productDB",
+         "host": mongoURI
+         }
     for route in ROUTES_MAP:
         api.add_resource(route["resource"], route["route"])
     return flask_app
