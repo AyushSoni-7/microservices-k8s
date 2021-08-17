@@ -1,0 +1,23 @@
+version: '3'
+services: 
+  postgres:
+    container_name: 'postgres'
+    image: postgres:9.4
+    ports:
+      - '5432:5432'
+    environment: 
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes: 
+      - ./postgres_data:/var/lib/postgresql/data
+  mongo:
+    container_name: 'mongo'
+    image: mongo:latest
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo_data:/data/db

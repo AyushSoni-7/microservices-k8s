@@ -1,0 +1,20 @@
+<div class="float-right mb-3">
+    <button class="btn btn-success" routerLink="edit">Edit</button>
+    <button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+</div>
+
+<div *ngIf="product">
+    <img [src]="product.img_src" alt="image" style="width: 100%;">
+    <div class="appbackground">
+        <div>
+            <h1 class="heading">{{ product.name }}</h1>
+            <p class="content">{{ product.description }}</p>
+            <h2 class="heading"> Quantity: {{ product.quantity }}</h2>
+            <h2 class="heading"> Calories: {{ product.calory }}</h2>
+            <h2 class="heading"> Benefits </h2>
+            <blockquote class="blockquote"> {{ product.benefits }} </blockquote>
+            <h3 class="heading"> Harm </h3>
+            <blockquote class="blockquote"> {{ product.harm }} </blockquote>
+        </div>
+    </div>
+</div>

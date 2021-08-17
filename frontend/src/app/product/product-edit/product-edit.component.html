@@ -1,0 +1,84 @@
+<div *ngIf="renderTemplate">
+<form class="form-horizontal" [formGroup]="productInfoForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+    
+    <!-- Form Name -->
+    <legend>Form Name</legend>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="name">Name</label>  
+      <div class="col-md-4">
+      <input formControlName="name" name="name" type="text" class="form-control input-md" required=""> 
+      </div>
+    </div>
+    
+    <!-- Textarea -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="description">Description of the product</label>
+      <div class="col-md-4">                     
+        <textarea class="form-control" formControlName="description" name="description">default text</textarea>
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="img_src">Source URL of image</label>  
+      <div class="col-md-4">
+      <input formControlName="img_src" name="img_src" type="text" class="form-control input-md" required="">
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="quantity">Quantity Available</label>  
+      <div class="col-md-4">
+      <input formControlName="quantity" name="quantity" type="text" class="form-control input-md" required="">
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="price">Price of the product</label>  
+      <div class="col-md-4">
+      <input formControlName="price" name="price" type="text" class="form-control input-md" required="">
+      </div>
+    </div>
+    
+    <!-- Textarea -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="benefits">Benefit of the product</label>
+      <div class="col-md-4">                     
+        <textarea class="form-control" formControlName="benefits" name="benefits">default text</textarea>
+      </div>
+    </div>
+    
+    <!-- Textarea -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="harm">Harms of product </label>
+      <div class="col-md-4">                     
+        <textarea class="form-control" formControlName="harm" name="harm">default text</textarea>
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="calory">Calories per 100gm</label>  
+      <div class="col-md-4">
+      <input formControlName="calory" name="calory" type="text" class="form-control input-md" required="">
+      </div>
+    </div>
+    
+    <!-- Button (Double) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="save"></label>
+      <div class="col-md-8">
+        <button type="submit" name="save" class="btn btn-success">Save</button>
+        <!-- <button name="cancel" class="btn btn-danger">Cancel</button> -->
+      </div>
+    </div>
+    
+    
+    </fieldset>
+</form>
+</div>

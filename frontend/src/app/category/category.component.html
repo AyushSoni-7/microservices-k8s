@@ -1,0 +1,22 @@
+<div class="float-right mb-3">
+    <button class="btn btn-success" routerLink="add">Add</button>
+</div>
+
+<div class="row card-group">
+    <div class="col-4"  *ngFor="let category of categories">
+        <div class="card" style="margin-bottom:10px;">
+            <img class="card-img-top" src="{{ category.img_src }}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{ category.name }}</h4>
+                <p class="card-text">"{{ category.description }}"</p>
+                <!-- <div class="row"> -->
+                    <div class="btn-group">
+                        <button [routerLink]="['/products', category.id]" type="button" class="btn btn-success btn-block">View</button>
+                        <button (click)="deleteCategory(category.id)" type="button" class="btn btn-danger btn-block">Remove</button>
+                        <button [routerLink]="[category.id, 'edit']" type="button" class="btn btn-primary btn-block">Edit</button>
+                    </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

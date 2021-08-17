@@ -1,0 +1,18 @@
+<div class="float-right mb-3">
+    <button class="btn btn-success" routerLink="add">Add</button>
+</div>
+
+<div class="row card-group">
+    <div class="col-4"  *ngFor="let product of products">
+        <div class="card" style="margin-bottom:10px;">
+            <img class="card-img-top" src="{{ product.img_src }}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{ product.name }}</h4>
+                <p class="card-text">"{{ product.description }}"</p>
+                <div class="btn-group">
+                    <button type="button" [routerLink]="['/product', product.id]" class="btn btn-primary btn-block">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
