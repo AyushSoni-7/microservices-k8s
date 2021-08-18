@@ -14,7 +14,10 @@ services:
   mongo:
     container_name: 'mongo'
     image: mongo:latest
-    # environment:
+    restart: always
+    environment:
+      PUID: 1000
+      PGID: 1000
     #   MONGO_INITDB_ROOT_USERNAME: root
     #   MONGO_INITDB_ROOT_PASSWORD: password
     ports:
@@ -25,15 +28,20 @@ services:
     environment: 
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
-    container_name: categoryAPI
+    container_name: category-api
     build: ./backend/categoryAPI
     ports: 
       - 5000:5000
+    depends_on:
+      - postgres
   product-api:
     environment: 
       category_url: http://category-api:5000
-      hostURL: "mongo"
-    container_name: productAPI
+      hostURL: mongo
+    container_name: product-api
     build: ./backend/productAPI
     ports:
       - 5001:5001
+    depends_on:
+      - mongo
+      - category-api

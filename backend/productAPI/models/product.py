@@ -14,6 +14,7 @@ class Product(db.Document):
     quantity = db.DecimalField(required=True)
     benefits = db.StringField(required=True)
     harm = db.StringField(required=True)
+
     # def __init__(
     #             self, name: str, description: str,
     #             img_src: str, quantity: float,

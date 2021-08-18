@@ -15,7 +15,7 @@ def create_app():
     flask_app.config['CORS_HEADERS'] = 'Content-Type'
     api = Api(flask_app)
     flask_app.config.from_object(DevelopmentConfig)
-    db.init_app(flask_app)
+    # db.init_app(flask_app)
     # flask_app.config['MONGODB_SETTINGS'] = {
     #     'db': 'productDB',
     #     'host': 'localhost',
@@ -23,13 +23,15 @@ def create_app():
     #     'username': 'root',
     #     'password': 'password'
     # }
-    hostURL = os.environ.get('hostURL', 'localhost')
-    portMongo = os.environ.get('hostURL', '27017')
-    mongoURI = "mongodb://" + hostURL + ":" + portMongo + "/productDB"
+    # hostURL = os.environ.get('hostURL', 'localhost')
+    # portMongo = os.environ.get('hostPort', '27017')
+    # mongoURI = "mongodb://" + hostURL + ":" + portMongo + "/productDB"
+    # print(mongoURI)
     flask_app.config["MONGODB_SETTINGS"] = {
          'DB': "productDB",
-         "host": mongoURI
+         "host": "mongodb://mongo:27017/productDB"
          }
+    db.init_app(flask_app)
     for route in ROUTES_MAP:
         api.add_resource(route["resource"], route["route"])
     return flask_app
