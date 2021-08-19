@@ -1,8 +1,10 @@
-version: '3'
+version: "3.9"
 services: 
   postgres:
     container_name: 'postgres'
     image: postgres:9.4
+    networks:
+      - mynet
     ports:
       - '5432:5432'
     environment: 
@@ -15,6 +17,8 @@ services:
     container_name: 'mongo'
     image: mongo:latest
     restart: always
+    networks:
+        - mynet
     environment:
       PUID: 1000
       PGID: 1000
@@ -24,24 +28,47 @@ services:
       - 27017:27017
     volumes:
       - ./mongo_data:/data/db
-  category-api:
+  category-api-service:
     environment: 
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
-    container_name: category-api
+    container_name: category-api-service
+    image: category-api:latest
+    networks:
+      - mynet
     build: ./backend/categoryAPI
     ports: 
       - 5000:5000
     depends_on:
       - postgres
-  product-api:
+  product-api-service:
     environment: 
-      category_url: http://category-api:5000
+      category_url: http://category-api-service:5000
       hostURL: mongo
-    container_name: product-api
+    container_name: product-api-service
     build: ./backend/productAPI
+    image: product-api:latest
+    networks:
+      - mynet
     ports:
       - 5001:5001
     depends_on:
       - mongo
-      - category-api
+      - category-api-service
+  frontend-application:
+    container_name: frontend-application
+    build: ./frontend
+    image: frontend-application:latest
+    ports:
+      - 80:80
+      # - 4200:4200
+    networks:
+      - mynet
+    depends_on:
+      - product-api-service
+      - category-api-service
+    # volumes:
+    #   - ./frontend:/frontend
+    # command: ng serve --host 0.0.0.0 --port 4200 
+networks:
+  mynet:
