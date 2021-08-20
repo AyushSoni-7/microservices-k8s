@@ -4,10 +4,6 @@
 
 export const environment = {
   production: false,
-  // category_service_url: "http://category-api-service:5000",
-  // product_service_url: "http://product-api-service:5001"
-  category_service_url: "http://localhost:5000",
-  product_service_url: "http://localhost:5001"
 };
 
 /*
