@@ -25,6 +25,6 @@ spec:
         - containerPort: 80
         env:
         - name: category_service_url
-          value: http://category-api-service:5000/category
+          value: http://category-api-service:5000/apic
         - name: product_service_url
-          value: http://product-api-service:50/product
+          value: http://product-api-service:50/apip
