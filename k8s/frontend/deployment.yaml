@@ -27,4 +27,4 @@ spec:
         - name: category_service_url
           value: http://category-api-service:5000
         - name: product_service_url
-          value: http://product-api-service:5001
+          value: http://product-api-service:50

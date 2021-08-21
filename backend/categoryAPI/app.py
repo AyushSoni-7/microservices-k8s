@@ -1,3 +1,4 @@
+from backend.categoryAPI import resources
 from flask import Flask
 import os
 from flask_cors import CORS
@@ -10,7 +11,7 @@ from data.insert_metadata import insert_metadata
 
 def create_app():
     flask_app = Flask(__name__)
-    cors = CORS(flask_app)
+    cors = CORS(flask_app, resources={r"*": {"origins": "*"}})
     flask_app.config['CORS_HEADERS'] = 'Content-Type'
     api = Api(flask_app)
     flask_app.config.from_object(DevelopmentConfig)

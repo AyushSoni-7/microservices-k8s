@@ -4,13 +4,20 @@ metadata:
   name: category-ingress-service
 spec:
   rules:
-  - host: category-api-service
-    http:
+  - http:
       paths:
       - pathType: Prefix
-        path: "/"
+        path: "/category"
         backend:
           service:
             name: category-api-service
             port:
               number: 5000
+      - pathType: Prefix
+        path: "/product"
+        backend:
+          service:
+            name: product-api-service
+            port:
+              number: 5001
+      
