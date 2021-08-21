@@ -24,4 +24,3 @@ spec:
             name: product-api-service
             port:
               number: 5001
-      
