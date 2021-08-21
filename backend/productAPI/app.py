@@ -32,7 +32,7 @@ def create_app():
          }
     db.init_app(flask_app)
     for route in ROUTES_MAP:
-        api.add_resource(route["resource"], "/apip" + route["route"])
+        api.add_resource(route["resource"], route["route"])
     return flask_app
 
 
