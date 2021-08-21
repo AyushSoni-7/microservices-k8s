@@ -59,16 +59,15 @@ services:
     container_name: frontend-application
     build: ./frontend
     image: frontend-application:latest
+    environment: 
+      category_service_url: http://localhost:5000
+      product_service_url: http://localhost:5001
     ports:
       - 80:80
-      # - 4200:4200
     networks:
       - mynet
     depends_on:
       - product-api-service
       - category-api-service
-    # volumes:
-    #   - ./frontend:/frontend
-    # command: ng serve --host 0.0.0.0 --port 4200 
 networks:
   mynet:

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: frontend-application
+  name: frontend-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-application
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: frontend-application
+    spec:
+      containers:
+      - image: frontend-application:latest
+        name: frontend-application
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env:
+        - name: category_service_url
+          value: http://192.168.49.2/apic
+        - name: product_service_url
+          value: http://192.168.49.2/apip

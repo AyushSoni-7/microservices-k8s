@@ -1,9 +1,8 @@
 //
 // ===== File globals.ts    
 //
-import { environment } from "src/environments/environment";
 
 'use strict';
 
-export const category_service_url: string=environment.category_service_url;
-export const product_service_url: string=environment.product_service_url;
+export const category_service_url: string=window["env"]["category_service_url"] || "http://localhost:5000";
+export const product_service_url: string=window["env"]["product_service_url"] || "http://localhost:5000";

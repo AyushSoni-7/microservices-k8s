@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_restful import Api
 from db import db
 from resources import ROUTES_MAP
@@ -11,7 +11,7 @@ from models.product import Product
 
 def create_app():
     flask_app = Flask(__name__)
-    cors = CORS(flask_app)
+    cors = CORS(flask_app, resources={r"*": {"origins": "*"}})
     flask_app.config['CORS_HEADERS'] = 'Content-Type'
     api = Api(flask_app)
     flask_app.config.from_object(DevelopmentConfig)

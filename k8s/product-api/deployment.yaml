@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: product-api
+  name: product-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-api
+  template:
+    metadata:
+      labels:
+        app: product-api
+    spec:
+      containers:
+      - image: product-api
+        name: product-api
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5001
+        env:
+        - name: category_url
+          value:  http://category-api-service:5000
+        - name: hostURL
+          value: mongo

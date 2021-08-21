@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: product-api-service
+  name: product-api-service
+spec:
+  ports:
+  - name: product-api
+    port: 5001
+    protocol: TCP
+    targetPort: 5001
+  selector:
+    app: product-api
+  type: ClusterIP
