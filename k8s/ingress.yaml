@@ -6,15 +6,19 @@ spec:
   rules:
   - http:
       paths:
+      - path: /?(.*)
+          backend:
+            serviceName: frontend-service
+            servicePort: 80
       - pathType: Prefix
-        path: "/category"
+        path: /category/?(.*)
         backend:
           service:
             name: category-api-service
             port:
               number: 5000
       - pathType: Prefix
-        path: "/product"
+        path: /product/?(.*)
         backend:
           service:
             name: product-api-service
