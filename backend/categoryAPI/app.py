@@ -1,4 +1,3 @@
-from backend.categoryAPI import resources
 from flask import Flask
 import os
 from flask_cors import CORS
