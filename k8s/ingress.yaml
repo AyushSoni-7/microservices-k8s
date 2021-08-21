@@ -7,23 +7,23 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: /?(.*)
-        backend:
-          service:
-            name: frontend-service
-            port:
-              number: 80
-      - pathType: Prefix
-        path: /category/?(.*)
+        path: /apic
         backend:
           service:
             name: category-api-service
             port:
               number: 5000
       - pathType: Prefix
-        path: /product/?(.*)
+        path: /apip
         backend:
           service:
             name: product-api-service
             port:
               number: 5001
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80

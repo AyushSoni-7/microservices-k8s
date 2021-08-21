@@ -16,7 +16,7 @@ def create_app():
     flask_app.config.from_object(DevelopmentConfig)
     db.init_app(flask_app)
     for route in ROUTES_MAP:
-        api.add_resource(route["resource"], "/category" + route["route"])
+        api.add_resource(route["resource"], "/apic" + route["route"])
     return flask_app
 
 
