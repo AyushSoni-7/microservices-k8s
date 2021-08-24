@@ -27,3 +27,4 @@ spec:
   selector:
     app.kubernetes.io/instance: kiali
     app.kubernetes.io/name: kiali
+---
