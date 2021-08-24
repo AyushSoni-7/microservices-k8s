@@ -7,7 +7,7 @@ metadata:
   name: product-api-service
 spec:
   ports:
-  - name: product-api
+  - name: tcp-5001
     port: 5001
     protocol: TCP
     targetPort: 5001

@@ -4,6 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: category-api
+    version: v1
   name: category-api
 spec:
   replicas: 1
@@ -14,6 +15,7 @@ spec:
     metadata:
       labels:
         app: category-api
+        version: v1
     spec:
       containers:
       - image: category-api
