@@ -3,6 +3,7 @@
 To use local images:
 
 - `eval $(minikube docker-env)`
+- `minikube -p minikube docker-env`
 
 ## Installing Istio
 
