@@ -18,6 +18,14 @@ spec:
       containers:
       - image: product-api
         name: product-api
+        livenessProbe:
+          httpGet:
+            path: /1
+            port: 5001
+        readinessProbe:
+          httpGet:
+            path: /1
+            port: 5001
         imagePullPolicy: Never
         ports:
         - containerPort: 5001

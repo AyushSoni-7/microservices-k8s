@@ -18,6 +18,14 @@ spec:
       containers:
       - image: category-api
         name: category-api
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
         imagePullPolicy: Never
         ports:
         - containerPort: 5000

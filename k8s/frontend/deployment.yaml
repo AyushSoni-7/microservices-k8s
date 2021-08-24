@@ -20,6 +20,14 @@ spec:
       containers:
       - image: frontend-application:latest
         name: frontend-application
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
         imagePullPolicy: Never
         ports:
         - containerPort: 80
