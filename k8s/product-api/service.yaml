@@ -11,6 +11,7 @@ spec:
     port: 5001
     protocol: TCP
     targetPort: 5001
+    nodePort: 30092
   selector:
     app: product-api
-  type: ClusterIP
+  type: NodePort

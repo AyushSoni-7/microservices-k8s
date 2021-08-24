@@ -25,6 +25,6 @@ spec:
         - containerPort: 80
         env:
         - name: category_service_url
-          value: http://192.168.49.2/apic
+          value: http://192.168.49.2:30091
         - name: product_service_url
-          value: http://192.168.49.2/apip
+          value: http://192.168.49.2:30092
