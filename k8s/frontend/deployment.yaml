@@ -35,6 +35,6 @@ spec:
         - containerPort: 80
         env:
         - name: category_service_url
-          value: http://192.168.49.2:30091
+          value: http://127.0.0.1:30091
         - name: product_service_url
-          value: http://192.168.49.2:30092
+          value: http://127.0.0.1:30092
