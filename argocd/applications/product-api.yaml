@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: product-api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/AyushSoni-7/microservices-k8s.git
+    targetRevision: main
+    path: k8s/product-api 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
