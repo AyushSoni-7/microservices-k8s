@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/AyushSoni-7/microservices-k8s.git
-    targetRevision: main
+    targetRevision: feature-nodeport-svc 
     path: k8s/frontend 
   destination:
     server: https://kubernetes.default.svc
