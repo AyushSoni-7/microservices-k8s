@@ -7,9 +7,8 @@ metadata:
   name: category-api-service
 spec:
   ports:
-  - name:  tcp-5000
+  - name:  http
     port: 5000
-    protocol: TCP
     targetPort: 5000
     nodePort: 30091
   selector:

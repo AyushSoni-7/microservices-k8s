@@ -7,10 +7,9 @@ metadata:
   name: frontend-service
 spec:
   ports:
-  - name:  tcp-80
+  - name: http
     nodePort: 30083
     port: 80
-    protocol: TCP
     targetPort: 80
   selector:
     app: frontend-application

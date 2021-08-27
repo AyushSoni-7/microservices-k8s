@@ -7,9 +7,8 @@ metadata:
   name: product-api-service
 spec:
   ports:
-  - name: tcp-5001
+  - name: http
     port: 5001
-    protocol: TCP
     targetPort: 5001
     nodePort: 30092
   selector:
