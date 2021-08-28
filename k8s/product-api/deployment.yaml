@@ -22,11 +22,11 @@ spec:
         name: product-api
         livenessProbe:
           httpGet:
-            path: /1
+            path: /healthcheck
             port: 5001
         readinessProbe:
           httpGet:
-            path: /1
+            path: /healthcheck
             port: 5001
         imagePullPolicy: Never
         ports:

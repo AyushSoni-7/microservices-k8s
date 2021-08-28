@@ -126,3 +126,8 @@ class GetProduct(Resource):
         retVal['id'] = str(product['id'])
         del retVal['_id']
         return retVal, 200
+
+
+class HealthCheck(Resource):
+    def get(self):
+        return {"mesasge": "app is working just fine..."}, 200
