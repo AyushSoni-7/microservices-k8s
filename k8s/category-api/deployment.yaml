@@ -43,7 +43,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: category-api
-    version: v1
+    version: v2
   name: category-api-img-not-found
 spec:
   replicas: 1
