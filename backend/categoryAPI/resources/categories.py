@@ -30,7 +30,7 @@ class Categories(Resource):
         try:
             data = Category.get_all()
         except Exception:
-            return {"message": "Data not found"}, 500
+            return {"message": "Data not found"}, 404
         return {'categories': data}, 200
 
     def post(self):
