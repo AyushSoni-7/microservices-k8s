@@ -54,7 +54,7 @@ spec:
     metadata:
       labels:
         app: category-api
-        version: v1
+        version: v2
     spec:
       containers:
       - image: category-api:v1-img-np
