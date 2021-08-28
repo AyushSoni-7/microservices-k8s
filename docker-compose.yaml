@@ -33,7 +33,7 @@ services:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
     container_name: category-api-service
-    image: category-api:latest
+    image: category-api:v1-img-np
     networks:
       - mynet
     build: ./backend/categoryAPI
@@ -47,7 +47,7 @@ services:
       hostURL: mongo
     container_name: product-api-service
     build: ./backend/productAPI
-    image: product-api:latest
+    image: product-api:v1-img-np
     networks:
       - mynet
     ports:

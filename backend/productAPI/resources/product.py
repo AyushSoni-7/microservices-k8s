@@ -46,7 +46,7 @@ class Products(Resource):
             values = Product.getProducts(int(_id))
         except Exception:
             return {"message": "data not found"}, 404
-        key = ('id', 'name', 'description', 'img_src')
+        key = ('id', 'name', 'description')
         retVal = list(map(lambda value:  dict(tuple(zip(key, value))), values))
         for data in retVal:
             data['id'] = str(data['id'])
@@ -128,6 +128,7 @@ class GetProduct(Resource):
         retVal = json.loads(product.json())
         retVal['id'] = str(product['id'])
         del retVal['_id']
+        del retVal['img_src']
         return retVal, 200
 
 

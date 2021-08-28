@@ -31,6 +31,8 @@ class Categories(Resource):
             data = Category.get_all()
         except Exception:
             return {"message": "Data not found"}, 404
+        for d in data:
+            del d['img_src']
         return {'categories': data}, 200
 
     def post(self):
