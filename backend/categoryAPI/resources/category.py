@@ -9,7 +9,7 @@ class Category(Resource):
         if category:
             data = category.json()
             del data['img_src']
-            return category.json(), 200
+            return data, 200
         return {'message': 'Category Not Found'}, 404
 
     def delete(self, category_id: int):
