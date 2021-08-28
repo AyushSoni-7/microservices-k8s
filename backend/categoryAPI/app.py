@@ -24,8 +24,8 @@ if __name__ == "__main__":
     port = os.environ.get("port", 5000)
     app = create_app()
 
-    @app.before_first_request
-    def create_tables():
-        db.create_all()
-        insert_metadata(db)
+    # @app.before_first_request
+    # def create_tables():
+    #     db.create_all()
+    #     insert_metadata(db)
     app.run(host="0.0.0.0", port=port)
