@@ -7,7 +7,9 @@ class Products(Resource):
         try:
             data = ProductCategoryMap.get_products(int(_id))
         except Exception:
-            return {"message": "data not found"}, 404
+            return {"message": "failed retriving data"}, 500
+        if not data:
+            return {'products': data}, 404
         return {
           'products': data
           }, 200
