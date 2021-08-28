@@ -1,4 +1,5 @@
 from flask_restful import Resource, reqparse
+from flask_sqlalchemy.utils import engine_config_warning
 from models.product import Product
 from bson.objectid import ObjectId
 import json
@@ -42,9 +43,14 @@ class Products(Resource):
 
     # Used as category id
     def get(self, _id):
-        values = Product.getProducts(int(_id))
+        try:
+            values = Product.getProducts(int(_id))
+        except Exception:
+            return {"message": "data not found"}, 404
         key = ('id', 'name', 'description', 'img_src')
         retVal = list(map(lambda value:  dict(tuple(zip(key, value))), values))
+        if not retVal:
+            return {"message": "data not found"}, 404
         for data in retVal:
             data['id'] = str(data['id'])
         return {
