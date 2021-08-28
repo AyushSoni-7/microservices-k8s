@@ -1,5 +1,4 @@
 from flask_restful import Resource, reqparse
-from flask_sqlalchemy.utils import engine_config_warning
 from models.product import Product
 from bson.objectid import ObjectId
 import json
