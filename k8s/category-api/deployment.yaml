@@ -36,3 +36,43 @@ spec:
           value: postgres
         - name: POSTGRES_PORT
           value: "5432"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: category-api
+    version: v2
+  name: category-api-img-not-found
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: category-api
+  template:
+    metadata:
+      labels:
+        app: category-api
+        version: v2
+    spec:
+      containers:
+      - image: category-api:v1-img-np
+        name: category-api
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        env:
+        - name: POSTGRES_HOST
+          value: postgres
+        - name: POSTGRES_PORT
+          value: "5432"
+---

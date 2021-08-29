@@ -36,3 +36,43 @@ spec:
           value:  http://category-api-service:5000
         - name: hostURL
           value: mongo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: product-api
+    version: v1
+  name: product-api-img-not-found
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-api
+  template:
+    metadata:
+      labels:
+        app: product-api
+        version: v2
+    spec:
+      containers:
+      - image: product-api:v1-img-np
+        name: product-api
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 5001
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 5001
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5001
+        env:
+        - name: category_url
+          value:  http://category-api-service:5000
+        - name: hostURL
+          value: mongo
+---
