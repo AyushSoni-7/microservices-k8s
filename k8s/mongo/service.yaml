@@ -9,6 +9,6 @@ spec:
   selector:
     app: mongo
   ports:
-  - name: "mongo-service"
+  - name: tcp
     port: 27017
     targetPort: 27017
