@@ -1,0 +1,15 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: category-subset-rules
+spec:
+  host: category-api-service.default.svc.cluster.local
+  subsets:
+  - name: safe-subset
+    labels:  # selector
+      version: v1
+  - name: risky-subset
+    labels:
+      version: v2
+---
