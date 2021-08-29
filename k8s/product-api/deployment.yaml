@@ -50,6 +50,7 @@ spec:
   selector:
     matchLabels:
       app: product-api
+      version: v2
   template:
     metadata:
       labels:

@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       app: category-api
+      version: v1
   template:
     metadata:
       labels:
