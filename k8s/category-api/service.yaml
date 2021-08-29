@@ -7,9 +7,8 @@ metadata:
   name: category-api-service
 spec:
   ports:
-  - name: category-api
+  - name: http
     port: 5000
-    protocol: TCP
     targetPort: 5000
   selector:
     app: category-api

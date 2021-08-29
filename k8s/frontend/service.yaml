@@ -7,13 +7,10 @@ metadata:
   name: frontend-service
 spec:
   ports:
-  - name: frontend
-    nodePort: 30083
+  - name: http
     port: 80
-    protocol: TCP
     targetPort: 80
   selector:
     app: frontend-application
-  type: NodePort
-status:
-  loadBalancer: {}
+  type: ClusterIP
+
