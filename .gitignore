@@ -1,3 +1,5 @@
+# stickiness exception
+/service-mesh/custom-routing/4. Consistent Hashing(Stickiness)/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

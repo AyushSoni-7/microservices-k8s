@@ -4,8 +4,14 @@ from models.product_category_map import ProductCategoryMap
 
 class Products(Resource):
     def get(self, _id):
+        try:
+            data = ProductCategoryMap.get_products(int(_id))
+        except Exception:
+            return {"message": "failed retriving data"}, 500
+        if not data:
+            return {'products': data}, 404
         return {
-          'products': ProductCategoryMap.get_products(int(_id))
+          'products': data
           }, 200
 
     def delete(self, _id):

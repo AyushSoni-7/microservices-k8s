@@ -4,6 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: frontend-application
+    version: v1
   name: frontend-application
 spec:
   replicas: 1
@@ -16,10 +17,19 @@ spec:
       creationTimestamp: null
       labels:
         app: frontend-application
+        version: v1
     spec:
       containers:
       - image: frontend-application:latest
         name: frontend-application
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
         imagePullPolicy: Never
         ports:
         - containerPort: 80

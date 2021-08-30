@@ -10,7 +10,8 @@ spec:
   - name: http
     port: 5000
     targetPort: 5000
+    nodePort: 30091
   selector:
     app: category-api
-  type: ClusterIP
+  type: NodePort
 
