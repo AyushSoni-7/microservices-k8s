@@ -35,6 +35,7 @@ spec:
         - containerPort: 80
         env:
         - name: category_service_url
-          value: http://127.0.0.1:30091
+          value: http://localhost/apic
         - name: product_service_url
-          value: http://127.0.0.1:30092
+          value: http://localhost/apip
+
