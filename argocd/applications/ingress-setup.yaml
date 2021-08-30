@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: product-api
+  name: ingress-routing-setup
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -9,8 +9,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/AyushSoni-7/microservices-k8s.git
-    targetRevision: feature-istio-service-mesh
-    path: k8s/product-api 
+    targetRevision: main
+    path: k8s/ingress-routing 
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -20,3 +20,4 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+
