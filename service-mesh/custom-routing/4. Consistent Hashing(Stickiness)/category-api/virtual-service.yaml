@@ -6,8 +6,6 @@ metadata:
 spec:
   hosts:
   - category-api-service.default.svc.cluster.local
-  gateways:
-    - sample-app
   http:
   - route:
     - destination:
