@@ -4,6 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: category-api
+    version: v1
   name: category-api
 spec:
   replicas: 1
@@ -14,10 +15,19 @@ spec:
     metadata:
       labels:
         app: category-api
+        version: v1
     spec:
       containers:
       - image: category-api
         name: category-api
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
         imagePullPolicy: Never
         ports:
         - containerPort: 5000

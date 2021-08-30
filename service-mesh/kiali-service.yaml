@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: kiali
+  name: kiali-nodeport
   namespace: istio-system
   labels:
     app: kiali
