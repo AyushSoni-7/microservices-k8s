@@ -1,3 +1,39 @@
+# kind: VirtualService
+# apiVersion: networking.istio.io/v1alpha3
+# metadata:
+#   name: sample-webapp
+# spec:
+#   hosts:      # which incoming host are we applying the proxy rules to???
+#     - "*"
+#   gateways:
+#     - sample-app
+#   http:
+#     - match:
+#       - uri:
+#           prefix: "/apic"
+#       rewrite:
+#         uri: "/"
+#       route:
+#       - destination:
+#           host: category-api-service.default.svc.cluster.local
+#           port:
+#             number: 5000
+#     - match:
+#       - uri:
+#           prefix: "/apip"
+#       rewrite:
+#         uri: "/"
+#       route:
+#       - destination:
+#           host: product-api-service.default.svc.cluster.local
+#           port:
+#             number: 5001
+#     - route:
+#       - destination:
+#           host: frontend-service
+#           port:
+#             number: 80
+
 kind: VirtualService
 apiVersion: networking.istio.io/v1alpha3
 metadata:
@@ -11,6 +47,9 @@ spec:
     - match:
       - uri:
           prefix: "/apic"
+        headers:
+          test-header:
+            exact: canary
       rewrite:
         uri: "/"
       route:
@@ -18,6 +57,18 @@ spec:
           host: category-api-service.default.svc.cluster.local
           port:
             number: 5000
+          subset: risky-subset
+    - match:
+      - uri:
+          prefix: "/apic"
+      rewrite:
+        uri: "/"
+      route:
+      - destination:
+          host: category-api-service.default.svc.cluster.local
+          port:
+            number: 5000
+          subset: safe-subset
     - match:
       - uri:
           prefix: "/apip"
