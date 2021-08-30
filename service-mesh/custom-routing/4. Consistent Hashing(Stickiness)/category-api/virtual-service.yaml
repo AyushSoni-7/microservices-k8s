@@ -1,0 +1,16 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: category-virtual-service
+spec:
+  hosts:
+  - category-api-service.default.svc.cluster.local
+  gateways:
+    - sample-app
+  http:
+  - route:
+    - destination:
+        host: category-api-service.default.svc.cluster.local
+        subset: all-pods
+---
