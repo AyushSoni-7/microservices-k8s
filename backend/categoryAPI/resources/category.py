@@ -7,7 +7,9 @@ class Category(Resource):
     def get(self, category_id: int):
         category = cModel.get(category_id)
         if category:
-            return category.json(), 200
+            data = category.json()
+            del data['img_src']
+            return data, 200
         return {'message': 'Category Not Found'}, 404
 
     def delete(self, category_id: int):

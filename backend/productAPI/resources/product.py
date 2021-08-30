@@ -42,8 +42,11 @@ class Products(Resource):
 
     # Used as category id
     def get(self, _id):
-        values = Product.getProducts(int(_id))
-        key = ('id', 'name', 'description', 'img_src')
+        try:
+            values = Product.getProducts(int(_id))
+        except Exception:
+            return {"message": "data not found"}, 404
+        key = ('id', 'name', 'description')
         retVal = list(map(lambda value:  dict(tuple(zip(key, value))), values))
         for data in retVal:
             data['id'] = str(data['id'])
@@ -125,4 +128,10 @@ class GetProduct(Resource):
         retVal = json.loads(product.json())
         retVal['id'] = str(product['id'])
         del retVal['_id']
+        del retVal['img_src']
         return retVal, 200
+
+
+class HealthCheck(Resource):
+    def get(self):
+        return {"mesasge": "app is working just fine..."}, 200
