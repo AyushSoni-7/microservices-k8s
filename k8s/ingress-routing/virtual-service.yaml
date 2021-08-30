@@ -4,7 +4,7 @@ metadata:
   name: sample-webapp
 spec:
   hosts:      # which incoming host are we applying the proxy rules to???
-    - "localhost"
+    - "*"
   gateways:
     - sample-app
   http:
