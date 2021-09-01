@@ -85,7 +85,7 @@ metadata:
   labels:
     app: category-api
     version: v3
-  name: category-api-img-not-found
+  name: category-api-delay
 spec:
   replicas: 1
   selector:
