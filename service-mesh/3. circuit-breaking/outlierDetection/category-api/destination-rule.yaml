@@ -1,0 +1,28 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: category-subset-rules
+spec:
+  host: category-api-service.default.svc.cluster.local
+  trafficPolicy:
+    connectionPool:
+      http:
+        http1MaxPendingRequests: 1
+        maxRequestsPerConnection: 1
+    outlierDetection:
+      consecutive5xxErrors: 2
+      interval: 30s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 100
+  subsets:
+  - name: safe-subset
+    labels:  # selector
+      version: v1
+  - name: risky-subset
+    labels:
+      version: v2
+  - name: delay-subset
+    labels:
+      version: v3
+---

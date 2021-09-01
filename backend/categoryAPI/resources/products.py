@@ -1,9 +1,11 @@
 from flask_restful import Resource
 from models.product_category_map import ProductCategoryMap
+import time
 
 
 class Products(Resource):
     def get(self, _id):
+        time.sleep(10)
         try:
             data = ProductCategoryMap.get_products(int(_id))
         except Exception:
